@@ -1,0 +1,7 @@
+main.class
+br\com\brunobs\model\Produto.class
+br\com\brunobs\reflexao\Mapeador.class
+br\com\brunobs\reflexao\ValidadorDeNulo.class
+br\com\brunobs\model\NotaFiscal.class
+br\com\brunobs\reflexao\BuscaString.class
+br\com\brunobs\model\Usuario.class
