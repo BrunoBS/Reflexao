@@ -33,7 +33,7 @@ public class MapeadorTest {
 	 }
 
 	public void testGetClassQueExiste() {
-		Class<?> classe = mapeador.carregaClass("br.com.brunobs.model.Usuario1");
+		Class<?> classe = mapeador.carregaClass("br.com.brunobs.model.Usuario");
 		assertEquals(classe, Usuario.class);
 	}
 
