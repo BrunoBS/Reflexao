@@ -6,7 +6,7 @@ import java.util.List;
 
 public class BuscaString {
 
-	public static List<String> getAtributosNulos(Object o, String parametro) {
+	public static List<String> find(Object o, String parametro) {
 		List<String> retorno = new ArrayList<>();
 		Class<?> classe = o.getClass();
 		for (Field f : classe.getFields()) {

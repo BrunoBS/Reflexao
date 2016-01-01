@@ -20,8 +20,8 @@ public class BuscaStringTest {
 		u.email="usuario";
 		u.login="usuario";
 		u.papel="usuario";
-		List<String> lista = BuscaString.getAtributosNulos(u, u.login);
-		assertEquals(2, lista.size());
+		List<String> lista = BuscaString.find(u, u.login);
+		assertEquals(3, lista.size());
 		assertTrue(lista.contains("login"));
 	}
 	
