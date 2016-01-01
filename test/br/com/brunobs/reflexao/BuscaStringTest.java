@@ -21,7 +21,7 @@ public class BuscaStringTest {
 		u.login="usuario";
 		u.papel="usuario";
 		List<String> lista = BuscaString.getAtributosNulos(u, u.login);
-		assertEquals(3, lista.size());
+		assertEquals(2, lista.size());
 		assertTrue(lista.contains("login"));
 	}
 	
