@@ -16,10 +16,10 @@ public class ValidadorDeNuloTest {
 	@Test
 	public void testUsuario() {
 		Usuario u = new Usuario();
-		u.ativo=true;
-		u.email="usurio@email.com";
-		u.login="master";
-		u.papel="admin";
+		u.setAtivo(true);
+		u.setEmail("usurio@email.com");
+		u.setLogin("master");
+		u.setPapel("admin");
 		List<String> lista = ValidadorDeNulo.getAtributosNulos(u);
 		assertEquals(1, lista.size());
 		assertTrue(lista.contains("senha"));

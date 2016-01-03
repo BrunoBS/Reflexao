@@ -1,6 +1,7 @@
 package br.com.brunobs.reflexao;
 
 import java.io.FileInputStream;
+import java.lang.reflect.Constructor;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -29,7 +30,7 @@ public class Mapeador {
 		}
 	}
 
-	public Class<?> carregaClass(String path){
+	public Class<?> carregaClass(String path) {
 		try {
 			Class<?> clazz = null;
 			if (path != null) {
@@ -37,17 +38,43 @@ public class Mapeador {
 			} else {
 				throw new RuntimeException("Chave inválida");
 			}
-	
+
 			return clazz;
 
 		} catch (Exception e) {
-			throw new RuntimeException("Erro ao carregar a classe: " + path + ", verifique se ela realmente existe!");
+			throw new RuntimeException("Erro ao carregar a classe: " + path
+					+ ", verifique se ela realmente existe!");
 		}
 	}
 
 	public Class<?> getImplementacao(Class<?> interF) {
 		return mapa.get(interF);
 
+	}
+
+	public <E> E getIntanciar(Class<E> interF) {
+		try {
+			return (E) getImplementacao(interF).newInstance();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public <E> E getIntanciar(Class<E> interF, Object ... params) {
+		try {
+			
+			Class<?> clazz = getImplementacao(interF);
+			Class<?>[] tiposConstrutor = new Class<?>[params.length];
+			for (int i = 0; i < tiposConstrutor.length; i++) {
+				tiposConstrutor[i] =params[i].getClass();
+			}
+			Constructor<?>c = clazz.getConstructor(tiposConstrutor);
+			return (E)c.newInstance(params);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
 	}
 
 }

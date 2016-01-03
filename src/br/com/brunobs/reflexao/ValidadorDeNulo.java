@@ -9,9 +9,10 @@ public class ValidadorDeNulo {
 	public static List<String> getAtributosNulos(Object o) {
 		List<String> retorno = new ArrayList<>();
 		Class<?> classe = o.getClass();
-		for (Field f : classe.getFields()) {
+		for (Field f : classe.getDeclaredFields()) {
 			Object valor;
 			try {
+				f.setAccessible(true);
 				valor = f.get(o);
 				if (valor == null) {
 					retorno.add(f.getName());

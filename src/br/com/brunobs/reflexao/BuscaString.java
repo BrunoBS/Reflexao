@@ -9,9 +9,10 @@ public class BuscaString {
 	public static List<String> find(Object o, String parametro) {
 		List<String> retorno = new ArrayList<>();
 		Class<?> classe = o.getClass();
-		for (Field f : classe.getFields()) {
+		for (Field f : classe.getDeclaredFields()) {
 			Object valor;
 			try {
+				f.setAccessible(true);
 				valor = f.get(o);
 				if (valor != null) {
 					String string = valor.toString();
